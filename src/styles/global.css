@@ -181,5 +181,13 @@
 }
 
 html {
-  font-size: var(--font-size);
+  /* Mobile: 14px base font size */
+  font-size: 14px;
+}
+
+/* Desktop: 16px base font size */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
 }

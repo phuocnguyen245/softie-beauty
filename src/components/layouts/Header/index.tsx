@@ -55,6 +55,8 @@ export function Header() {
             <button
               onClick={toggleCart}
               className="relative p-2 hover:bg-secondary rounded-full transition-colors"
+              data-cart-button="true"
+              aria-label="Shopping cart"
             >
               <ShoppingCart className="w-5 h-5 text-foreground" />
               {totalItems > 0 && (

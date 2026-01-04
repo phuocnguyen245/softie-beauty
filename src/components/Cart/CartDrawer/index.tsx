@@ -1,7 +1,10 @@
+"use client";
 import { X, Trash2, ShoppingBag } from "lucide-react";
 import { QuantitySelector } from "../QuantitySelector";
 import { useEffect } from "react";
 import { useCartStore } from "@/provider/cart-provider";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function CartDrawer() {
   const {
@@ -12,8 +15,7 @@ export function CartDrawer() {
     updateQuantity,
     getSubtotal,
   } = useCartStore((state) => state);
-
-  // Prevent body scroll when cart is open
+  const router = useRouter();
   useEffect(() => {
     if (isCartOpen) {
       document.body.style.overflow = "hidden";
@@ -29,6 +31,11 @@ export function CartDrawer() {
 
   const subtotal = getSubtotal();
   const isEmpty = cart.length === 0;
+
+  const handleCheckout = () => {
+    toggleCart();
+    router.push("/checkout");
+  };
 
   return (
     <>
@@ -63,20 +70,21 @@ export function CartDrawer() {
                 Add some beautiful products to get started!
               </p>
             </div>
-            <button
+            <Link
+              href="/"
               onClick={toggleCart}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
             >
               Start Shopping
-            </button>
+            </Link>
           </div>
         ) : (
           <>
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4">
-              {cart.map((item) => (
+              {cart.map((item, index) => (
                 <div
-                  key={item.id}
+                  key={`${item.id}-${item.selectedVariant || ""}-${index}`}
                   className="flex gap-4 p-4 bg-white rounded-2xl border border-border shadow-sm"
                 >
                   {/* Product Image */}
@@ -91,9 +99,16 @@ export function CartDrawer() {
                   {/* Product Info */}
                   <div className="flex-1 min-w-0 space-y-2">
                     <div className="flex items-start justify-between gap-2">
-                      <h4 className="text-foreground text-sm leading-tight">
-                        {item.name}
-                      </h4>
+                      <div>
+                        <h4 className="text-foreground text-sm leading-tight">
+                          {item.name}
+                        </h4>
+                        {item.selectedVariant && (
+                          <p className="text-xs text-rose-600 font-medium mt-0.5">
+                            {item.selectedVariant}
+                          </p>
+                        )}
+                      </div>
                       <button
                         onClick={() => removeFromCart(item)}
                         className="p-1 hover:bg-secondary rounded-lg transition-colors flex-shrink-0"
@@ -108,9 +123,12 @@ export function CartDrawer() {
                         onIncrease={() =>
                           updateQuantity(item, (item.cartQuantity ?? 0) + 1)
                         }
-                        onDecrease={() =>
-                          updateQuantity(item, (item.cartQuantity ?? 0) - 1)
-                        }
+                        onDecrease={() => {
+                          const currentQuantity = item.cartQuantity ?? 0;
+                          if (currentQuantity > 1) {
+                            updateQuantity(item, currentQuantity - 1);
+                          }
+                        }}
                         size="sm"
                       />
                       <span className="text-primary">
@@ -134,7 +152,7 @@ export function CartDrawer() {
               <div className="space-y-3">
                 <a
                   href="#cart"
-                  onClick={toggleCart}
+                  onClick={handleCheckout}
                   className="block w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md text-center"
                 >
                   Checkout

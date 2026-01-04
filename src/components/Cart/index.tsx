@@ -1,6 +1,8 @@
+"use client";
 import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { QuantitySelector } from "./QuantitySelector";
 import { useCartStore } from "@/provider/cart-provider";
+import Link from "next/link";
 
 export function CartPage() {
   const { cart, removeFromCart, updateQuantity, getSubtotal } = useCartStore(
@@ -27,13 +29,13 @@ export function CartPage() {
                 products
               </p>
             </div>
-            <a
-              href="#home"
+            <Link
+              href="/"
               className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
             >
               <ArrowLeft className="w-4 h-4" />
               Start Shopping
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -45,13 +47,13 @@ export function CartPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         {/* Header */}
         <div className="mb-8 space-y-4">
-          <a
-            href="#home"
+          <Link
+            href="/"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             Continue Shopping
-          </a>
+          </Link>
           <h1 className="text-3xl sm:text-4xl text-foreground">
             Shopping Cart
           </h1>
@@ -60,9 +62,9 @@ export function CartPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Cart Items */}
           <div className="lg:col-span-2 space-y-4">
-            {cart.map((item) => (
+            {cart.map((item, index) => (
               <div
-                key={item.id}
+                key={`${item.id}-${item.selectedVariant || ""}-${index}`}
                 className="bg-white rounded-3xl p-6 border border-border shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row gap-6">
@@ -80,6 +82,11 @@ export function CartPage() {
                     <div className="flex items-start justify-between gap-4">
                       <div>
                         <h3 className="text-foreground">{item.name}</h3>
+                        {item.selectedVariant && (
+                          <p className="text-xs text-rose-600 font-medium mt-1">
+                            {item.selectedVariant}
+                          </p>
+                        )}
                         <p className="text-sm text-muted-foreground mt-1">
                           ${item.price.toFixed(2)} per item
                         </p>
@@ -96,11 +103,14 @@ export function CartPage() {
                       <QuantitySelector
                         quantity={item.cartQuantity ?? 0}
                         onIncrease={() =>
-                          updateQuantity(item, item.cartQuantity ?? 0 + 1)
+                          updateQuantity(item, (item.cartQuantity ?? 0) + 1)
                         }
-                        onDecrease={() =>
-                          updateQuantity(item, item.cartQuantity ?? 0 - 1)
-                        }
+                        onDecrease={() => {
+                          const currentQuantity = item.cartQuantity ?? 0;
+                          if (currentQuantity > 1) {
+                            updateQuantity(item, currentQuantity - 1);
+                          }
+                        }}
                         size="md"
                       />
                       <div className="text-right">
@@ -145,7 +155,8 @@ export function CartPage() {
                 </div>
               </div>
 
-              <button className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md">
+              {/* Desktop Checkout Button */}
+              <button className="hidden lg:block w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md">
                 Proceed to Checkout
               </button>
 
@@ -167,6 +178,31 @@ export function CartPage() {
             </div>
           </div>
         </div>
+
+        {/* Mobile Fixed Checkout Bar */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-border shadow-lg z-50">
+          <div className="max-w-7xl mx-auto px-6 py-5">
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex-1 pr-4">
+                <p className="text-sm text-muted-foreground mb-1">Total</p>
+                <p className="text-3xl font-bold text-primary">
+                  ${total.toFixed(2)}
+                </p>
+              </div>
+              <button className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md font-medium text-base">
+                Checkout
+              </button>
+            </div>
+            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+              <span>Free shipping</span>
+              <span>•</span>
+              <span>Secure checkout</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Spacer for mobile fixed checkout */}
+        <div className="lg:hidden h-24"></div>
       </div>
     </div>
   );

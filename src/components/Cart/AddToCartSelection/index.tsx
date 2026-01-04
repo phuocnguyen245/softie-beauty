@@ -1,5 +1,6 @@
 import { ShoppingCart, Sparkles } from "lucide-react";
 import { QuantitySelector } from "../QuantitySelector";
+import { RefObject } from "react";
 
 interface AddToCartSectionProps {
   price: number;
@@ -7,6 +8,7 @@ interface AddToCartSectionProps {
   onQuantityChange: (quantity: number) => void;
   onAddToCart: () => void;
   onBuyNow: () => void;
+  buttonRef?: RefObject<HTMLButtonElement>;
 }
 
 export function AddToCartSection({
@@ -15,6 +17,7 @@ export function AddToCartSection({
   onQuantityChange,
   onAddToCart,
   onBuyNow,
+  buttonRef,
 }: AddToCartSectionProps) {
   return (
     <div className="space-y-6 bg-white rounded-3xl p-6 border border-border shadow-sm">
@@ -38,6 +41,7 @@ export function AddToCartSection({
       {/* Buttons */}
       <div className="space-y-3">
         <button
+          ref={buttonRef}
           onClick={onAddToCart}
           className="w-full flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
         >

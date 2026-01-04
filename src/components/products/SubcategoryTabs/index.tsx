@@ -16,12 +16,12 @@ export function SubcategoryTabs({
   return (
     <div className="w-full py-4 bg-gradient-to-b from-rose-50/40 to-transparent animate-slideDown">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Horizontal Scrollable Subcategories */}
-        <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
-          <div className="flex gap-2 sm:gap-3 lg:justify-center min-w-max lg:min-w-0">
+        {/* Subcategories */}
+        <div className="overflow-x-hidden -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex flex-wrap gap-2 sm:gap-3 lg:justify-center">
             {subcategories.map((subcategory) => {
               const isActive = activeSubcategory === subcategory;
-              
+
               return (
                 <button
                   key={subcategory}
@@ -48,4 +48,3 @@ export function SubcategoryTabs({
     </div>
   );
 }
-
