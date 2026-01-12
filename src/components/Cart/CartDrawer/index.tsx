@@ -4,6 +4,7 @@ import { QuantitySelector } from "../QuantitySelector";
 import { useEffect } from "react";
 import { useCartStore } from "@/provider/cart-provider";
 import { useRouter } from "next/navigation";
+import { formatPrice } from "@/lib/utils";
 import Link from "next/link";
 
 export function CartDrawer() {
@@ -34,7 +35,7 @@ export function CartDrawer() {
 
   const handleCheckout = () => {
     toggleCart();
-    router.push("/checkout");
+    router.push("/cart");
   };
 
   return (
@@ -49,7 +50,7 @@ export function CartDrawer() {
       <div className="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-background shadow-2xl z-50 flex flex-col animate-in slide-in-from-right duration-300">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-border">
-          <h2 className="text-foreground">Your Cart</h2>
+          <h2 className="text-foreground">Giỏ hàng của bạn</h2>
           <button
             onClick={toggleCart}
             className="p-2 hover:bg-secondary rounded-full transition-colors"
@@ -65,9 +66,9 @@ export function CartDrawer() {
               <ShoppingBag className="w-12 h-12 text-muted-foreground" />
             </div>
             <div className="text-center space-y-2">
-              <h3 className="text-foreground">Your cart is empty</h3>
+              <h3 className="text-foreground">Giỏ hàng của bạn đang trống</h3>
               <p className="text-sm text-muted-foreground">
-                Add some beautiful products to get started!
+                Thêm một số sản phẩm đẹp để bắt đầu!
               </p>
             </div>
             <Link
@@ -75,7 +76,7 @@ export function CartDrawer() {
               onClick={toggleCart}
               className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
             >
-              Start Shopping
+              Bắt đầu mua sắm
             </Link>
           </div>
         ) : (
@@ -132,7 +133,7 @@ export function CartDrawer() {
                         size="sm"
                       />
                       <span className="text-primary">
-                        ${item.total?.toFixed(2)}
+                        {formatPrice(item.total ?? 0)}
                       </span>
                     </div>
                   </div>
@@ -144,8 +145,8 @@ export function CartDrawer() {
             <div className="border-t border-border p-6 space-y-4 bg-white">
               {/* Subtotal */}
               <div className="flex items-center justify-between">
-                <span className="text-muted-foreground">Subtotal</span>
-                <span className="text-foreground">${subtotal.toFixed(2)}</span>
+                <span className="text-muted-foreground">Tạm tính</span>
+                <span className="text-foreground">{formatPrice(subtotal)}</span>
               </div>
 
               {/* CTAs */}
@@ -155,17 +156,17 @@ export function CartDrawer() {
                   onClick={handleCheckout}
                   className="block w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md text-center"
                 >
-                  Checkout
+                  Thanh toán
                 </a>
                 <button
                   onClick={toggleCart}
                   className="w-full px-6 py-3 bg-secondary text-secondary-foreground rounded-full hover:bg-secondary/80 transition-all text-center"
                 >
-                  Continue Shopping
+                  Tiếp tục mua sắm
                 </button>
               </div>
             </div>
-          </>
+          </> 
         )}
       </div>
     </>

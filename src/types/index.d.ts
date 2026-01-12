@@ -53,3 +53,18 @@ export interface Product {
   total?: number;
   selectedVariant?: string; // Track which variant is in cart
 }
+
+// Category structure for admin
+export interface Category {
+  id: string; // Use parent name as ID
+  name: string;
+  slug: string;
+  subcategories: SubcategoryItem[];
+}
+
+export interface SubcategoryItem {
+  id: string; // Use subcategory name as ID
+  name: string;
+  slug: string;
+  categoryId: string; // Reference to parent category
+}

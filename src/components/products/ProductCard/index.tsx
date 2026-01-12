@@ -6,6 +6,8 @@ import { Product } from "@/types/index.d";
 import { useState, useRef } from "react";
 import Image from "next/image";
 import { useAddToCartAnimation } from "@/context/AnimationContext";
+import { getImageUrl } from "@/lib/image-utils";
+import { formatPrice } from "@/lib/utils";
 
 interface ProductCardProps {
   product: Product;
@@ -55,7 +57,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         className="block aspect-square overflow-hidden bg-secondary/20"
       >
         <Image
-          src={product.image}
+          src={getImageUrl(product.image)}
           width={500}
           height={500}
           alt={product.name}
@@ -84,7 +86,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                 onClick={() => setShowVariants(!showVariants)}
                 className="text-xs text-rose-600 hover:text-rose-700 font-medium"
               >
-                {showVariants ? "Hide" : "Show"} options (
+                {showVariants ? "Ẩn" : "Hiện"} tùy chọn (
                 {product.variants.length})
               </button>
 
@@ -115,11 +117,11 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <span className="text-xl text-primary font-semibold">
-              ${getCurrentPrice().toFixed(2)}
+              {formatPrice(getCurrentPrice())}
             </span>
             {product.variants && (
               <span className="text-xs text-muted-foreground">
-                {selectedVariant || "Select option"}
+                {selectedVariant || "Chọn tùy chọn"}
               </span>
             )}
           </div>
@@ -128,7 +130,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             onClick={handleAddToCart}
             className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
           >
-            <span className="hidden md:block text-sm">Add</span>
+            <span className="hidden md:block text-sm">Thêm</span>
             <ShoppingCart className="w-4 h-4" />
           </button>
         </div>

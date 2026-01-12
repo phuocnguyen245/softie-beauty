@@ -7,9 +7,9 @@ const testimonials = [
   {
     id: 1,
     name: "Sarah M.",
-    role: "Verified Customer",
+    role: "Khách hàng đã xác minh",
     content:
-      "Softie Beauty has completely transformed my skincare routine. The gentle formula is perfect for my sensitive skin, and I love the minimal packaging.",
+      "Softie Beauty đã hoàn toàn thay đổi quy trình chăm sóc da của tôi. Công thức dịu nhẹ hoàn hảo cho làn da nhạy cảm của tôi, và tôi yêu thích bao bì tối giản.",
     rating: 5,
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
@@ -17,9 +17,9 @@ const testimonials = [
   {
     id: 2,
     name: "Emily R.",
-    role: "Beauty Enthusiast",
+    role: "Người yêu làm đẹp",
     content:
-      "Finally, a brand that understands clean beauty! The products are effective yet gentle, and my skin has never looked better. Highly recommend!",
+      "Cuối cùng, một thương hiệu hiểu về làm đẹp sạch! Sản phẩm hiệu quả nhưng dịu nhẹ, và làn da của tôi chưa bao giờ đẹp hơn. Rất đáng giới thiệu!",
     rating: 5,
     image:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
@@ -27,9 +27,9 @@ const testimonials = [
   {
     id: 3,
     name: "Jessica L.",
-    role: "Loyal Customer",
+    role: "Khách hàng trung thành",
     content:
-      "I appreciate the Korean-inspired approach to skincare. Every product feels luxurious and the results speak for themselves. My go-to brand now!",
+      "Tôi đánh giá cao cách tiếp cận chăm sóc da lấy cảm hứng từ Hàn Quốc. Mỗi sản phẩm đều cảm thấy sang trọng và kết quả nói lên tất cả. Thương hiệu yêu thích của tôi!",
     rating: 5,
     image:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop",
@@ -43,10 +43,10 @@ export function Testimonials() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground">
-            What Our Customers Say
+            Khách hàng nói gì về chúng tôi
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of happy customers who trust Softie Beauty
+            Tham gia cùng hàng nghìn khách hàng hài lòng tin tưởng Softie Beauty
           </p>
         </div>
 

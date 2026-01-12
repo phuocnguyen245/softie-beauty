@@ -3,11 +3,16 @@ import { Trash2, ShoppingBag, ArrowLeft } from "lucide-react";
 import { QuantitySelector } from "./QuantitySelector";
 import { useCartStore } from "@/provider/cart-provider";
 import Link from "next/link";
+import { useState } from "react";
+import { CheckoutModal } from "@/components/Checkout";
+import { getImageUrl } from "@/lib/image-utils";
+import { formatPrice } from "@/lib/utils";
 
 export function CartPage() {
   const { cart, removeFromCart, updateQuantity, getSubtotal } = useCartStore(
     (state) => state
   );
+  const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
   const subtotal = getSubtotal();
   const shipping = 0; // Free shipping
@@ -23,10 +28,10 @@ export function CartPage() {
               <ShoppingBag className="w-16 h-16 text-muted-foreground" />
             </div>
             <div className="text-center space-y-3">
-              <h1 className="text-3xl text-foreground">Your cart is empty</h1>
+              <h1 className="text-3xl text-foreground">Giỏ hàng của bạn đang trống</h1>
               <p className="text-lg text-muted-foreground max-w-md">
-                Discover our beautiful collection of gentle, effective skincare
-                products
+                Khám phá bộ sưu tập đẹp của chúng tôi với các sản phẩm
+                chăm sóc da dịu nhẹ và hiệu quả
               </p>
             </div>
             <Link
@@ -34,7 +39,7 @@ export function CartPage() {
               className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
             >
               <ArrowLeft className="w-4 h-4" />
-              Start Shopping
+              Bắt đầu mua sắm
             </Link>
           </div>
         </div>
@@ -52,10 +57,10 @@ export function CartPage() {
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Continue Shopping
+            Tiếp tục mua sắm
           </Link>
           <h1 className="text-3xl sm:text-4xl text-foreground">
-            Shopping Cart
+            Giỏ hàng
           </h1>
         </div>
 
@@ -71,7 +76,7 @@ export function CartPage() {
                   {/* Product Image */}
                   <div className="w-full sm:w-32 h-32 rounded-2xl overflow-hidden bg-secondary/20 flex-shrink-0">
                     <img
-                      src={item.image}
+                      src={getImageUrl(item.image)}
                       alt={item.name}
                       className="w-full h-full object-cover"
                     />
@@ -88,7 +93,7 @@ export function CartPage() {
                           </p>
                         )}
                         <p className="text-sm text-muted-foreground mt-1">
-                          ${item.price.toFixed(2)} per item
+                          {formatPrice(item.price)} / sản phẩm
                         </p>
                       </div>
                       <button
@@ -114,12 +119,11 @@ export function CartPage() {
                         size="md"
                       />
                       <div className="text-right">
-                        <p className="text-sm text-muted-foreground">Total</p>
+                        <p className="text-sm text-muted-foreground">Tổng</p>
                         <p className="text-xl text-primary">
-                          $
-                          {(
+                          {formatPrice(
                             Number(item.price) * Number(item.cartQuantity ?? 0)
-                          ).toFixed(2)}
+                          )}
                         </p>
                       </div>
                     </div>
@@ -132,49 +136,37 @@ export function CartPage() {
           {/* Order Summary */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-border shadow-sm sticky top-24 space-y-6">
-              <h3 className="text-foreground">Order Summary</h3>
+              <h3 className="text-foreground">Tóm tắt đơn hàng</h3>
 
               <div className="space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-border">
-                  <span className="text-muted-foreground">Subtotal</span>
+                  <span className="text-muted-foreground">Tạm tính</span>
                   <span className="text-foreground">
-                    ${subtotal.toFixed(2)}
+                    {formatPrice(subtotal)}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between pb-3 border-b border-border">
-                  <span className="text-muted-foreground">Shipping</span>
-                  <span className="text-primary">Free</span>
+                  <span className="text-muted-foreground">Vận chuyển</span>
+                  <span className="text-primary">Miễn phí</span>
                 </div>
 
                 <div className="flex items-center justify-between pt-2">
-                  <span className="text-foreground">Total</span>
+                  <span className="text-foreground">Tổng cộng</span>
                   <span className="text-2xl text-primary">
-                    ${total.toFixed(2)}
+                    {formatPrice(total)}
                   </span>
                 </div>
               </div>
 
               {/* Desktop Checkout Button */}
-              <button className="hidden lg:block w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md">
-                Proceed to Checkout
+              <button
+                onClick={() => setIsCheckoutModalOpen(true)}
+                className="hidden lg:block w-full px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
+              >
+                Tiến hành thanh toán
               </button>
 
-              {/* Features */}
-              <div className="space-y-3 pt-4 border-t border-border">
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  <span>Free shipping on orders over $50</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  <span>30-day money-back guarantee</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
-                  <span>Secure checkout</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -184,19 +176,22 @@ export function CartPage() {
           <div className="max-w-7xl mx-auto px-6 py-5">
             <div className="flex items-center justify-between mb-3">
               <div className="flex-1 pr-4">
-                <p className="text-sm text-muted-foreground mb-1">Total</p>
+                <p className="text-sm text-muted-foreground mb-1">Tổng cộng</p>
                 <p className="text-3xl font-bold text-primary">
-                  ${total.toFixed(2)}
+                  {formatPrice(total)}
                 </p>
               </div>
-              <button className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md font-medium text-base">
-                Checkout
+              <button
+                onClick={() => setIsCheckoutModalOpen(true)}
+                className="px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md font-medium text-base"
+              >
+                Thanh toán
               </button>
             </div>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
-              <span>Free shipping</span>
+              <span>Miễn phí vận chuyển</span>
               <span>•</span>
-              <span>Secure checkout</span>
+              <span>Thanh toán an toàn</span>
             </div>
           </div>
         </div>
@@ -204,6 +199,12 @@ export function CartPage() {
         {/* Spacer for mobile fixed checkout */}
         <div className="lg:hidden h-24"></div>
       </div>
+
+      {/* Checkout Modal */}
+      <CheckoutModal
+        isOpen={isCheckoutModalOpen}
+        onClose={() => setIsCheckoutModalOpen(false)}
+      />
     </div>
   );
 }

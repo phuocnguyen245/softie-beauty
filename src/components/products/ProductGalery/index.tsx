@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getImageUrl } from "@/lib/image-utils";
 
 interface ProductGalleryProps {
   images: string[];
@@ -13,7 +14,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
       {/* Main Image */}
       <div className="relative aspect-square rounded-3xl overflow-hidden bg-secondary/20 shadow-lg">
         <img
-          src={images[selectedImage]}
+          src={getImageUrl(images[selectedImage])}
           alt={productName}
           className="w-full h-full object-cover"
         />
@@ -33,7 +34,7 @@ export function ProductGallery({ images, productName }: ProductGalleryProps) {
               }`}
             >
               <img
-                src={image}
+                src={getImageUrl(image)}
                 alt={`${productName} view ${index + 1}`}
                 className="w-full h-full object-cover"
               />

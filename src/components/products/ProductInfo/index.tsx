@@ -21,10 +21,10 @@ export function ProductInfo({
   >("description");
 
   const tabs = [
-    { id: "description" as const, label: "Description" },
-    { id: "benefits" as const, label: "Key Benefits" },
-    { id: "howto" as const, label: "How to Use" },
-    { id: "ingredients" as const, label: "Ingredients" },
+    { id: "description" as const, label: "Mô tả" },
+    { id: "benefits" as const, label: "Lợi ích chính" },
+    { id: "howto" as const, label: "Cách sử dụng" },
+    { id: "ingredients" as const, label: "Thành phần" },
   ];
 
   return (
@@ -55,7 +55,7 @@ export function ProductInfo({
             </p>
             <div className="pt-4 border-t border-border">
               <p className="text-sm text-muted-foreground">
-                <span className="text-foreground">Suitable for:</span>{" "}
+                <span className="text-foreground">Phù hợp với:</span>{" "}
                 {suitableFor}
               </p>
             </div>

@@ -1,13 +1,12 @@
 "use client";
 
 import { useCartStore } from "@/provider/cart-provider";
-import { useState } from "react";
-import { ParentCategory, Subcategory } from "@/types/index.d";
+import { useState, useEffect } from "react";
+import { ParentCategory, Product, Subcategory } from "@/types/index.d";
 import { CategoryTabs } from "./CategoryTabs";
 import { SubcategoryTabs } from "./SubcategoryTabs";
 import { ProductCard } from "./ProductCard";
 import categoryStructure from "@/constants/category.json";
-import products from "@/constants/product.json";
 
 export function FeaturedProducts() {
   const { addToCart } = useCartStore((state) => state);
@@ -15,16 +14,31 @@ export function FeaturedProducts() {
     useState<ParentCategory>("All");
   const [activeSubcategory, setActiveSubcategory] =
     useState<Subcategory | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch fresh products from API (no cache)
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('/api/products', {
+          cache: 'no-store',
+        });
+        const result = await response.json();
+        if (result.success) {
+          setProducts(result.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   // Define all parent categories
-  const parentCategories: ParentCategory[] = [
-    "All",
-    "False Lashes",
-    "Beauty Tools",
-    "Makeup Products",
-    "Skincare & Body Care",
-    "Press-on Nails",
-  ];
+    const parentCategories: ParentCategory[] = categoryStructure.map((cat) => cat.parent as ParentCategory);
 
   // Get subcategories for the active parent category
   const currentSubcategories =
@@ -71,11 +85,11 @@ export function FeaturedProducts() {
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground">
-            Featured Products
+            Sản phẩm nổi bật
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our curated collection of gentle, effective beauty
-            essentials
+            Khám phá bộ sưu tập được tuyển chọn của chúng tôi với các sản phẩm
+            làm đẹp dịu nhẹ và hiệu quả
           </p>
         </div>
 
@@ -96,15 +110,21 @@ export function FeaturedProducts() {
         )}
 
         {/* Products Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8 mt-12">
-          {filteredProducts.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              onAddToCart={(productToAdd) => addToCart(productToAdd)}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">Đang tải sản phẩm...</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4 lg:gap-8 mt-12">
+            {filteredProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product as unknown as Product}
+                onAddToCart={(productToAdd) => addToCart(productToAdd)}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

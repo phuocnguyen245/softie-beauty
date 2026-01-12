@@ -41,25 +41,25 @@ const HeaderCart = () => {
             href="#home"
             className="block py-2 text-foreground hover:text-primary transition-colors"
           >
-            Home
+            Trang chủ
           </a>
           <a
             href="#products"
             className="block py-2 text-foreground hover:text-primary transition-colors"
           >
-            Products
+            Sản phẩm
           </a>
           <a
             href="#about"
             className="block py-2 text-foreground hover:text-primary transition-colors"
           >
-            About
+            Giới thiệu
           </a>
           <a
             href="#contact"
             className="block py-2 text-foreground hover:text-primary transition-colors"
           >
-            Contact
+            Liên hệ
           </a>
         </nav>
       )}

@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Gentle Cleansing Foam",
     "slug": "gentle-cleansing-foam",
-    "price": 32.0,
+    "price": 55,
     "image": "https://images.unsplash.com/photo-1556229010-aa3f7ff66b24?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWNpYWwlMjBjbGVhbnNlciUyMGJvdHRsZXxlbnwxfHx8fDE3Njc0MTYxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "pH-balanced daily cleanser",
     "parentCategory": "Skincare & Body Care",
@@ -13,7 +13,7 @@
     "id": 2,
     "name": "Hydrating Essence Serum",
     "slug": "hydrating-essence-serum",
-    "price": 48.0,
+    "price": 48,
     "image": "https://images.unsplash.com/photo-1643379850623-7eb6442cd262?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWF1dHklMjBzZXJ1bSUyMGJvdHRsZXxlbnwxfHx8fDE3NjczOTQ2NzJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "Lightweight hydrating serum",
     "parentCategory": "Skincare & Body Care",
@@ -23,7 +23,7 @@
     "id": 4,
     "name": "Radiance Glow Serum",
     "slug": "radiance-glow-serum",
-    "price": 55.0,
+    "price": 55,
     "image": "https://images.unsplash.com/photo-1614159102369-effd79eadadd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxza2luY2FyZSUyMGJlYXV0eSUyMHByb2R1Y3R8ZW58MXx8fHwxNzY3MzMwNDc5fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "Brightening vitamin C serum",
     "parentCategory": "Skincare & Body Care",
@@ -33,7 +33,7 @@
     "id": 3,
     "name": "Nourishing Face Cream",
     "slug": "nourishing-face-cream",
-    "price": 42.0,
+    "price": 42,
     "image": "https://images.unsplash.com/photo-1679394042175-717ca34ef0f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwY29zbWV0aWMlMjBjcmVhbXxlbnwxfHx8fDE3Njc0MTYxOTJ8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "Rich moisturizing cream",
     "parentCategory": "Skincare & Body Care",
@@ -43,7 +43,7 @@
     "id": 6,
     "name": "Dewy Skin Set",
     "slug": "dewy-skin-set",
-    "price": 89.0,
+    "price": 89,
     "image": "https://images.unsplash.com/photo-1627921522614-86d4b431bd21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWtldXAlMjBjb3NtZXRpY3N8ZW58MXx8fHwxNzY3MzgxNTg0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "Complete skincare routine",
     "parentCategory": "Skincare & Body Care",
@@ -53,7 +53,7 @@
     "id": 5,
     "name": "Soft Touch Lip Balm",
     "slug": "soft-touch-lip-balm",
-    "price": 18.0,
+    "price": 18,
     "image": "https://images.unsplash.com/photo-1535980904816-5741c64232bf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaW5rJTIwYmVhdXR5JTIwcHJvZHVjdHxlbnwxfHx8fDE3Njc0MTYxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
     "description": "Nourishing lip treatment",
     "parentCategory": "Makeup Products",
@@ -63,23 +63,35 @@
     "id": 7,
     "name": "Luxe Wispy Lashes",
     "slug": "luxe-wispy-lashes",
-    "price": 22.0,
+    "price": 22,
     "image": "https://images.unsplash.com/photo-1583241800698-4f71c7b90b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxzZSUyMGxhc2hlc3xlbnwxfHx8fDE3Njc0MTYxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Soft, natural flutter for everyday elegance",
     "parentCategory": "False Lashes",
     "subcategory": "Natural Lashes",
     "variants": [
-      { "name": "Short Natural", "price": 22.0 },
-      { "name": "Short Wispy", "price": 24.0 },
-      { "name": "Medium Wispy", "price": 26.0 },
-      { "name": "Long Dramatic", "price": 28.0 }
+      {
+        "name": "Short Natural",
+        "price": 22
+      },
+      {
+        "name": "Short Wispy",
+        "price": 24
+      },
+      {
+        "name": "Medium Wispy",
+        "price": 26
+      },
+      {
+        "name": "Long Dramatic",
+        "price": 28
+      }
     ]
   },
   {
     "id": 10,
     "name": "Soft Volume Lashes",
     "slug": "soft-volume-lashes",
-    "price": 26.0,
+    "price": 26,
     "image": "https://images.unsplash.com/photo-1583241800698-4f71c7b90b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxzZSUyMGxhc2hlc3xlbnwxfHx8fDE3Njc0MTYxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Soft natural volume",
     "parentCategory": "False Lashes",
@@ -89,7 +101,7 @@
     "id": 11,
     "name": "Dramatic Volume Lashes",
     "slug": "dramatic-volume-lashes",
-    "price": 28.0,
+    "price": 28,
     "image": "https://images.unsplash.com/photo-1583241800698-4f71c7b90b67?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmYWxzZSUyMGxhc2hlc3xlbnwxfHx8fDE3Njc0MTYxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Bold dramatic look",
     "parentCategory": "False Lashes",
@@ -99,22 +111,31 @@
     "id": 8,
     "name": "Professional Makeup Brush Set",
     "slug": "professional-makeup-brush-set",
-    "price": 58.0,
+    "price": 58,
     "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWtldXAlMjBicnVzaGVzfGVufDF8fHx8MTc2NzQxNjE5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Premium brush collection",
     "parentCategory": "Beauty Tools",
     "subcategory": "Brushes",
     "variants": [
-      { "name": "5-Piece Set", "price": 58.0 },
-      { "name": "10-Piece Set", "price": 88.0 },
-      { "name": "15-Piece Pro Set", "price": 128.0 }
+      {
+        "name": "5-Piece Set",
+        "price": 58
+      },
+      {
+        "name": "10-Piece Set",
+        "price": 88
+      },
+      {
+        "name": "15-Piece Pro Set",
+        "price": 128
+      }
     ]
   },
   {
     "id": 12,
     "name": "Beauty Blender Set",
     "slug": "beauty-blender-set",
-    "price": 32.0,
+    "price": 32,
     "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYWtldXAlMjBicnVzaGVzfGVufDF8fHx8MTc2NzQxNjE5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Soft makeup sponges",
     "parentCategory": "Beauty Tools",
@@ -124,7 +145,7 @@
     "id": 9,
     "name": "Nude Press-on Nails",
     "slug": "nude-press-on-nails",
-    "price": 19.0,
+    "price": 19,
     "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVzcyUyMG9uJTIwbmFpbHN8ZW58MXx8fHwxNzY3NDE2MTkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Classic nude manicure",
     "parentCategory": "Press-on Nails",
@@ -134,10 +155,70 @@
     "id": 13,
     "name": "French Tip Press-on Nails",
     "slug": "french-tip-press-on-nails",
-    "price": 22.0,
+    "price": 22,
     "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcmVzcyUyMG9uJTIwbmFpbHN8ZW58MXx8fHwxNzY3NDE2MTkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "description": "Elegant french manicure",
     "parentCategory": "Press-on Nails",
     "subcategory": "Artistic Nails"
+  },
+  {
+    "id": 14,
+    "name": "Gentle Cleansing Foam",
+    "slug": "gentle-cleansing-foam",
+    "price": 12312,
+    "image": "/api/files/products/b493aaa1-2607-4f19-9a13-1b78184a606e.jpg",
+    "description": "1241243",
+    "parentCategory": "Beauty Tools",
+    "subcategory": "Brushes",
+    "variants": [
+      {
+        "name": "123",
+        "price": 1231
+      },
+      {
+        "name": "125125",
+        "price": 125125
+      },
+      {
+        "name": "125125",
+        "price": 125125
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "test",
+    "slug": "test",
+    "price": 1124312,
+    "image": "/api/files/products/485ab5dd-d1f0-4d7a-8ed6-f1d62a8a29db.webp",
+    "description": "12512",
+    "parentCategory": "False Lashes",
+    "subcategory": "Natural Lashes",
+    "variants": [
+      {
+        "name": "125125",
+        "price": 125125
+      },
+      {
+        "name": "125125",
+        "price": 125125
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "test1",
+    "slug": "test1",
+    "price": 1245,
+    "image": "/api/files/products/1f261021-cf6f-4414-b33a-be231dd3a4d3.webp",
+    "description": "125125",
+    "parentCategory": "Mi gia",
+    "subcategory": "My ngan",
+    "variants": [
+      {
+        "name": "zdgsdfgsdfg",
+        "price": 123
+      }
+    ]
   }
 ]

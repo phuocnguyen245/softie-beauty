@@ -1,6 +1,8 @@
 "use client";
 
-import { Instagram, Facebook, Twitter } from "lucide-react";
+import { Facebook } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -13,60 +15,60 @@ export function Footer() {
           <div className="space-y-4">
             <h3 className="text-primary">Softie Beauty</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Gentle, effective skincare for everyday confidence. Embrace your
-              natural beauty.
+              Chăm sóc da dịu nhẹ, hiệu quả cho sự tự tin mỗi ngày. Tôn vinh
+              vẻ đẹp tự nhiên của bạn.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-foreground">Quick Links</h4>
+            <h4 className="text-foreground">Liên kết nhanh</h4>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#home"
+                <Link
+                  href="/#home"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Home
-                </a>
+                  Trang chủ
+                </Link>
               </li>
               <li>
-                <a
-                  href="#products"
+                <Link
+                  href="/#products"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Products
-                </a>
+                  Sản phẩm
+                </Link>
               </li>
               <li>
-                <a
-                  href="#about"
+                <Link
+                  href="/#about"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  About Us
-                </a>
+                  Giới thiệu
+                </Link>
               </li>
               <li>
-                <a
-                  href="#contact"
+                <Link
+                  href="/#contact"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Contact
-                </a>
+                  Liên hệ
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Support */}
           <div className="space-y-4">
-            <h4 className="text-foreground">Support</h4>
+            <h4 className="text-foreground">Hỗ trợ</h4>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  FAQ
+                  Câu hỏi thường gặp
                 </a>
               </li>
               <li>
@@ -74,7 +76,7 @@ export function Footer() {
                   href="#"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Shipping
+                  Vận chuyển
                 </a>
               </li>
               <li>
@@ -82,7 +84,7 @@ export function Footer() {
                   href="#"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Returns
+                  Đổi trả
                 </a>
               </li>
               <li>
@@ -90,7 +92,7 @@ export function Footer() {
                   href="#"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Privacy Policy
+                  Chính sách bảo mật
                 </a>
               </li>
             </ul>
@@ -98,25 +100,61 @@ export function Footer() {
 
           {/* Social */}
           <div className="space-y-4">
-            <h4 className="text-foreground">Follow Us</h4>
+            <h4 className="text-foreground">Theo dõi chúng tôi</h4>
             <div className="flex gap-3">
               <a
-                href="#"
+                href="https://zalo.me/0932445510"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-primary/10 transition-colors group"
+                aria-label="Zalo"
               >
-                <Instagram className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <Image
+                  src="/zalo-icon.svg"
+                  alt="Zalo"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
               </a>
               <a
-                href="#"
+                href="https://www.tiktok.com/@softiebeautydn?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-primary/10 transition-colors group"
+                aria-label="TikTok"
+              >
+                <Image
+                  src="/tiktok-simplified-black-icon.svg"
+                  alt="TikTok"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
+              </a>
+              <a
+                href="https://facebook.com/softiebeautyy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-primary/10 transition-colors group"
+                aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a
-                href="#"
+                href="https://shopee.vn/softiebeauty"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-secondary hover:bg-primary/10 transition-colors group"
+                aria-label="Shopee"
               >
-                <Twitter className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                <Image
+                  src="/shopee-icon.svg"
+                  alt="Shopee"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
               </a>
             </div>
           </div>
@@ -125,7 +163,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border text-center">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Softie Beauty. All rights reserved.
+            © {currentYear} Softie Beauty. Bảo lưu mọi quyền.
           </p>
         </div>
       </div>

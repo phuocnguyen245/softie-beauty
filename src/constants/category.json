@@ -3,43 +3,92 @@
     "parent": "False Lashes",
     "parentSlug": "false-lashes",
     "subcategories": [
-      { "name": "Natural Lashes", "slug": "natural-lashes" },
-      { "name": "Dramatic Lashes", "slug": "dramatic-lashes" }
+      {
+        "name": "Natural Lashes",
+        "slug": "natural-lashes"
+      },
+      {
+        "name": "Dramatic Lashes",
+        "slug": "dramatic-lashes"
+      }
     ]
   },
   {
     "parent": "Beauty Tools",
     "parentSlug": "beauty-tools",
     "subcategories": [
-      { "name": "Brushes", "slug": "brushes" },
-      { "name": "Applicators", "slug": "applicators" }
+      {
+        "name": "Brushes",
+        "slug": "brushes"
+      },
+      {
+        "name": "Applicators",
+        "slug": "applicators"
+      }
     ]
   },
   {
     "parent": "Makeup Products",
     "parentSlug": "makeup-products",
     "subcategories": [
-      { "name": "Lips", "slug": "lips" },
-      { "name": "Eyes", "slug": "eyes" },
-      { "name": "Face", "slug": "face" }
+      {
+        "name": "Lips",
+        "slug": "lips"
+      },
+      {
+        "name": "Eyes",
+        "slug": "eyes"
+      },
+      {
+        "name": "Face",
+        "slug": "face"
+      }
     ]
   },
   {
     "parent": "Skincare & Body Care",
     "parentSlug": "skincare-body-care",
     "subcategories": [
-      { "name": "Cleansers", "slug": "cleansers" },
-      { "name": "Serums", "slug": "serums" },
-      { "name": "Moisturizers", "slug": "moisturizers" },
-      { "name": "Body Care", "slug": "body-care" }
+      {
+        "name": "Cleansers",
+        "slug": "cleansers"
+      },
+      {
+        "name": "Serums",
+        "slug": "serums"
+      },
+      {
+        "name": "Moisturizers",
+        "slug": "moisturizers"
+      },
+      {
+        "name": "Body Care",
+        "slug": "body-care"
+      }
     ]
   },
   {
     "parent": "Press-on Nails",
     "parentSlug": "press-on-nails",
     "subcategories": [
-      { "name": "Natural Nails", "slug": "natural-nails" },
-      { "name": "Artistic Nails", "slug": "artistic-nails" }
+      {
+        "name": "Natural Nails",
+        "slug": "natural-nails"
+      },
+      {
+        "name": "Artistic Nails",
+        "slug": "artistic-nails"
+      }
+    ]
+  },
+  {
+    "parent": "Mi gia",
+    "parentSlug": "mi-gia",
+    "subcategories": [
+      {
+        "name": "My ngan",
+        "slug": "my-ngan"
+      }
     ]
   }
 ]

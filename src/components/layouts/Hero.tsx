@@ -14,12 +14,12 @@ export function Hero() {
           <div className="text-center lg:text-left space-y-6 lg:space-y-8">
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl text-foreground tracking-tight">
-                Soft beauty for everyday confidence
+                Vẻ đẹp tự nhiên cho sự tự tin mỗi ngày
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                Experience gentle, effective skincare crafted with minimal
-                ingredients. Embrace your natural beauty with our clean,
-                Korean-inspired formulations.
+                Trải nghiệm chăm sóc da dịu nhẹ, hiệu quả với thành phần tối giản.
+                Tôn vinh vẻ đẹp tự nhiên của bạn với các công thức sạch,
+                lấy cảm hứng từ Hàn Quốc.
               </p>
             </div>
 
@@ -28,13 +28,13 @@ export function Hero() {
                 href="#products"
                 className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
               >
-                Shop Now
+                Mua ngay
               </a>
               <a
                 href="#about"
                 className="inline-flex items-center justify-center px-8 py-3 bg-white text-foreground rounded-full hover:bg-secondary transition-all border border-border"
               >
-                Learn More
+                Tìm hiểu thêm
               </a>
             </div>
           </div>

@@ -28,11 +28,11 @@ export function Newsletter() {
             {/* Content */}
             <div className="space-y-3">
               <h2 className="text-3xl sm:text-4xl text-foreground">
-                Stay in Touch
+                Giữ liên lạc
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Subscribe to our newsletter for exclusive offers, beauty tips,
-                and new product launches
+                Đăng ký nhận bản tin để nhận ưu đãi độc quyền, mẹo làm đẹp,
+                và thông tin về sản phẩm mới
               </p>
             </div>
 
@@ -41,7 +41,7 @@ export function Newsletter() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="email"
-                  placeholder="Enter your email"
+                  placeholder="Nhập email của bạn"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
@@ -51,20 +51,20 @@ export function Newsletter() {
                   type="submit"
                   className="px-8 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md whitespace-nowrap"
                 >
-                  Subscribe
+                  Đăng ký
                 </button>
               </div>
 
               {subscribed && (
                 <p className="mt-4 text-primary text-sm">
-                  ✓ Thank you for subscribing! Check your inbox soon.
+                  ✓ Cảm ơn bạn đã đăng ký! Vui lòng kiểm tra hộp thư của bạn.
                 </p>
               )}
             </form>
 
             {/* Privacy Note */}
             <p className="text-xs text-muted-foreground">
-              We respect your privacy. Unsubscribe at any time.
+              Chúng tôi tôn trọng quyền riêng tư của bạn. Hủy đăng ký bất cứ lúc nào.
             </p>
           </div>
         </div>

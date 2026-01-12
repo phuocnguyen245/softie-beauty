@@ -4,6 +4,7 @@ import { ShoppingCart, Menu } from "lucide-react";
 import { useMemo, useState } from "react";
 import { useCartStore } from "@/provider/cart-provider";
 import Link from "next/link";
+import Image from "next/image";
 
 export function Header() {
   const { cart, toggleCart } = useCartStore((state) => state);
@@ -19,35 +20,35 @@ export function Header() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0">
-            <h1 className="text-primary tracking-tight">Softie Beauty</h1>
+            <Image src="/logo.png" alt="Softie Beauty" width={128} height={64} />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#home"
+            <Link
+              href="/#home"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Home
-            </a>
-            <a
-              href="#products"
+              Trang chủ
+            </Link>
+            <Link
+              href="/#products"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Products
-            </a>
-            <a
-              href="#about"
+              Sản phẩm
+            </Link>
+            <Link
+              href="/#about"
               className="text-foreground hover:text-primary transition-colors"
             >
-              About
-            </a>
-            <a
-              href="#contact"
+              Giới thiệu
+            </Link>
+            <Link
+              href="/#contact"
               className="text-foreground hover:text-primary transition-colors"
             >
-              Contact
-            </a>
+              Liên hệ
+            </Link>
           </nav>
 
           {/* Cart Icon */}
@@ -56,7 +57,7 @@ export function Header() {
               onClick={toggleCart}
               className="relative p-2 hover:bg-secondary rounded-full transition-colors"
               data-cart-button="true"
-              aria-label="Shopping cart"
+              aria-label="Giỏ hàng"
             >
               <ShoppingCart className="w-5 h-5 text-foreground" />
               {totalItems > 0 && (
@@ -83,25 +84,25 @@ export function Header() {
               href="#home"
               className="block py-2 text-foreground hover:text-primary transition-colors"
             >
-              Home
+              Trang chủ
             </a>
             <a
               href="#products"
               className="block py-2 text-foreground hover:text-primary transition-colors"
             >
-              Products
+              Sản phẩm
             </a>
             <a
               href="#about"
               className="block py-2 text-foreground hover:text-primary transition-colors"
             >
-              About
+              Giới thiệu
             </a>
             <a
               href="#contact"
               className="block py-2 text-foreground hover:text-primary transition-colors"
             >
-              Contact
+              Liên hệ
             </a>
           </nav>
         )}

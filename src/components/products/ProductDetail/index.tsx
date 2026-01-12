@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, RefObject } from "react";
 import { ArrowLeft, Star } from "lucide-react";
 import Link from "next/link";
 import { ProductGallery } from "../ProductGalery";
@@ -9,8 +9,10 @@ import { ProductInfo } from "../ProductInfo";
 import { RelatedProducts } from "../RelatedProduct";
 import { useCartStore } from "@/provider/cart-provider";
 import { Product, ProductVariant } from "@/types";
-import { ProductWithDetails, getRelatedProducts } from "@/lib/products";
+import { ProductWithDetails, getRelatedProducts, fetchRelatedProducts } from "@/lib/products";
 import { useAddToCartAnimation } from "@/context/AnimationContext";
+import { getImageUrl } from "@/lib/image-utils";
+import { formatPrice } from "@/lib/utils";
 
 interface ProductDetailProps {
   product: ProductWithDetails;
@@ -26,7 +28,9 @@ export function ProductDetailPage({ product }: ProductDetailProps) {
   const tagline = product.tagline || product.description;
   const rating = product.rating || 4.5;
   const reviewCount = product.reviewCount || 0;
-  const images = product.images || [product.image];
+  const rawImages = product.images || [product.image];
+  // Convert all images to proper URL format
+  const images = rawImages.map(img => getImageUrl(img));
   const variants = product.variants || [];
   const hasVariants = variants.length > 0;
 
@@ -37,8 +41,21 @@ export function ProductDetailPage({ product }: ProductDetailProps) {
   const [quantity, setQuantity] = useState(1);
   const [isSticky, setIsSticky] = useState(false);
 
-  // Get related products
-  const relatedProducts = getRelatedProducts(product);
+  // Get related products - fetch fresh data
+  const [relatedProducts, setRelatedProducts] = useState<ProductWithDetails[]>([]);
+  
+  useEffect(() => {
+    const loadRelatedProducts = async () => {
+      try {
+        const related = await fetchRelatedProducts(product);
+        setRelatedProducts(related);
+      } catch (error) {
+        // Fallback to static data
+        setRelatedProducts(getRelatedProducts(product));
+      }
+    };
+    loadRelatedProducts();
+  }, [product]);
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -170,9 +187,9 @@ export function ProductDetailPage({ product }: ProductDetailProps) {
               price={currentPrice}
               quantity={quantity}
               onQuantityChange={setQuantity}
-              onAddToCart={() => handleAddToCart(createProductWithVariant(), addToCartButtonRef)}
+              onAddToCart={() => handleAddToCart(createProductWithVariant(), addToCartButtonRef as unknown as RefObject<HTMLButtonElement>)}
               onBuyNow={() => handleBuyNow(createProductWithVariant())}
-              buttonRef={addToCartButtonRef}
+              buttonRef={addToCartButtonRef as unknown as RefObject<HTMLButtonElement>}
             />
           </div>
         </div>
@@ -211,14 +228,14 @@ export function ProductDetailPage({ product }: ProductDetailProps) {
                 {selectedVariant.name}
               </p>
             )}
-            <p className="text-xl text-primary">${currentPrice.toFixed(2)}</p>
+            <p className="text-xl text-primary">{formatPrice(currentPrice)}</p>
           </div>
           <button
             ref={mobileAddToCartButtonRef}
-            onClick={() => handleAddToCart(createProductWithVariant(), mobileAddToCartButtonRef)}
+            onClick={() => handleAddToCart(createProductWithVariant(), mobileAddToCartButtonRef as unknown as RefObject<HTMLButtonElement>)}
             className="flex-1 px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm"
           >
-            Add to Cart
+            Thêm vào giỏ
           </button>
         </div>
       </div>

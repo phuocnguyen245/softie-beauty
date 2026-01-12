@@ -5,21 +5,21 @@ import { Leaf, Sparkles, Heart } from "lucide-react";
 const features = [
   {
     icon: Leaf,
-    title: "Gentle Formula",
+    title: "Công thức dịu nhẹ",
     description:
-      "Carefully crafted with skin-loving ingredients that work in harmony with your natural beauty.",
+      "Được chế tác cẩn thận với các thành phần yêu thích da, hoạt động hài hòa với vẻ đẹp tự nhiên của bạn.",
   },
   {
     icon: Sparkles,
-    title: "Minimal Ingredients",
+    title: "Thành phần tối giản",
     description:
-      "Clean, transparent formulations with only what your skin truly needs—nothing more, nothing less.",
+      "Công thức sạch, minh bạch với chỉ những gì da bạn thực sự cần—không hơn, không kém.",
   },
   {
     icon: Heart,
-    title: "Everyday Beauty",
+    title: "Vẻ đẹp hàng ngày",
     description:
-      "Designed for daily use, our products enhance your natural radiance with effortless simplicity.",
+      "Được thiết kế cho sử dụng hàng ngày, sản phẩm của chúng tôi tăng cường vẻ rạng rỡ tự nhiên của bạn một cách đơn giản.",
   },
 ];
 
@@ -33,10 +33,10 @@ export function WhySoftie() {
         {/* Section Header */}
         <div className="text-center mb-12 sm:mb-16 space-y-4">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl text-foreground">
-            Why Softie Beauty
+            Tại sao chọn Softie Beauty
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            We believe beauty should be simple, gentle, and kind to your skin
+            Chúng tôi tin rằng vẻ đẹp nên đơn giản, dịu nhẹ và tốt cho làn da của bạn
           </p>
         </div>
 

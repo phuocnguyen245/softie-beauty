@@ -1,3 +1,4 @@
+import { formatPrice } from "@/lib/utils";
 import { useCartStore } from "@/provider/cart-provider";
 import { Product } from "@/types";
 import { ShoppingCart } from "lucide-react";
@@ -9,7 +10,7 @@ interface RelatedProductsProps {
 
 export function RelatedProducts({
   products,
-  title = "You May Also Like",
+  title = "Bạn có thể thích",
 }: RelatedProductsProps) {
   const { addToCart } = useCartStore((state) => state);
 
@@ -48,14 +49,14 @@ export function RelatedProducts({
 
                 <div className="flex items-center justify-between gap-2">
                   <span className="text-base sm:text-lg text-primary">
-                    ${Number(product.price).toFixed(2)}
+                    {formatPrice(product.price)}
                   </span>
                   <button
                     onClick={() => addToCart(product)}
                     className="flex items-center gap-1 px-3 py-2 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-all shadow-sm hover:shadow-md"
                   >
                     <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4" />
-                    <span className="text-xs sm:text-sm">Add</span>
+                    <span className="text-xs sm:text-sm">Thêm</span>
                   </button>
                 </div>
               </div>
