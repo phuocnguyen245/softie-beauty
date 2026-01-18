@@ -36,7 +36,7 @@ export interface ProductVariant {
   name: string;
   price: number;
   sku?: string;
-  images?: string[]; // Optional images for this variant, if not provided use parent product images
+  image?: string; // Optional image for this variant (absolute URL), if not provided use parent product image
 }
 
 export interface Product {

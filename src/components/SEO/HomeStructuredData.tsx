@@ -1,7 +1,8 @@
 import { fetchAllProducts } from "@/lib/products";
+import { getBaseUrl } from "@/lib/utils";
 
 export async function HomeStructuredData() {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
   
   let products: any[] = [];
   try {
@@ -27,7 +28,7 @@ export async function HomeStructuredData() {
     "@type": "WebSite",
     "name": "Softie Beauty",
     "description": "Chăm sóc da dịu nhẹ, hiệu quả với thành phần tối giản. Tôn vinh vẻ đẹp tự nhiên của bạn với các công thức sạch, lấy cảm hứng từ Hàn Quốc.",
-    "url": baseUrl,
+    "url": `${baseUrl}/`,
     "logo": `${baseUrl}/logo.jpg`,
     "image": `${baseUrl}/logo.jpg`,
     "publisher": {

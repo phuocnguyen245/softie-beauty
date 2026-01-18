@@ -75,8 +75,10 @@ export function ProductDetailPage({ product }: ProductDetailProps) {
   // Get current price from selected variant or product price
   const currentPrice = selectedVariant?.price || product.price;
 
-  // Get current images from selected variant or fallback to product images
-  const currentImages = selectedVariant?.images || images;
+  // Get current image from selected variant or fallback to product images
+  const currentImages = selectedVariant?.image 
+    ? [getImageUrl(selectedVariant.image)] 
+    : images;
 
   // Handle variant change
   const handleVariantChange = (variantName: string) => {

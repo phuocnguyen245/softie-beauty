@@ -31,6 +31,15 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     return product.price;
   };
 
+  // Get current image based on selected variant
+  const getCurrentImage = () => {
+    if (product.variants && selectedVariant) {
+      const variant = product.variants.find((v) => v.name === selectedVariant);
+      return variant?.image || product.image;
+    }
+    return product.image;
+  };
+
   const handleAddToCart = () => {
     const productToAdd = {
       ...product,
@@ -57,7 +66,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         className="block aspect-square overflow-hidden bg-secondary/20"
       >
         <Image
-          src={getImageUrl(product.image)}
+          src={getImageUrl(getCurrentImage())}
           width={500}
           height={500}
           alt={product.name}

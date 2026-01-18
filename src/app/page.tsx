@@ -6,12 +6,13 @@ import { FeaturedProducts } from "@/components/products";
 import { Metadata } from "next";
 import { fetchAllProducts } from "@/lib/products";
 import { HomeStructuredData } from "@/components/SEO/HomeStructuredData";
+import { getBaseUrl } from "@/lib/utils";
 
 // Force dynamic rendering to always fetch fresh data
 export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+  const baseUrl = getBaseUrl();
   
   // Fetch products for structured data
   let productsCount = 0;
@@ -40,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Softie Beauty - Vẻ đẹp tự nhiên cho sự tự tin mỗi ngày",
       description: `Khám phá bộ sưu tập ${productsCount > 0 ? `${productsCount}+ ` : ''}sản phẩm làm đẹp dịu nhẹ và hiệu quả. Chăm sóc da với thành phần tối giản, công thức sạch lấy cảm hứng từ Hàn Quốc.`,
-      url: baseUrl,
+      url: `${baseUrl}/`,
       siteName: "Softie Beauty",
       locale: "vi_VN",
       type: "website",
@@ -60,7 +61,7 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [`${baseUrl}/logo.jpg`],
     },
     alternates: {
-      canonical: baseUrl,
+      canonical: `${baseUrl}/`,
     },
   };
 }

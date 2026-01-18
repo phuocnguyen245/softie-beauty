@@ -220,5 +220,27 @@
         "price": 123
       }
     ]
+  },
+  {
+    "id": 17,
+    "name": "125125",
+    "slug": "125125",
+    "price": 1251251,
+    "image": "/api/files/products/d946d724-a74c-4a28-9125-eb22590c363c.jpg",
+    "description": "125125",
+    "parentCategory": "Makeup Products",
+    "subcategory": "Lips",
+    "variants": [
+      {
+        "name": "151251",
+        "price": 125125,
+        "image": "/api/files/products/2437b87a-89f3-440d-95c4-9fb3389b7919.jpg"
+      },
+      {
+        "name": "125125",
+        "price": 151251,
+        "image": "/api/files/products/7f49a2a1-9a89-486d-911b-4a6f4b1eb4c8.jpg"
+      }
+    ]
   }
 ]

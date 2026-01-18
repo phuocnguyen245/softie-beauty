@@ -26,7 +26,7 @@ export function ProductForm({ product, onSuccess, onCancel }: ProductFormProps) 
   const [variants, setVariants] = useState<ProductVariant[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [newVariant, setNewVariant] = useState({ name: '', price: '' });
+  const [newVariant, setNewVariant] = useState({ name: '', price: '', image: '' });
   const [categories, setCategories] = useState<Category[]>([]);
   const [subcategories, setSubcategories] = useState<SubcategoryItem[]>([]);
 
@@ -128,9 +128,13 @@ export function ProductForm({ product, onSuccess, onCancel }: ProductFormProps) 
       }
       setVariants([
         ...variants,
-        { name: newVariant.name, price: priceValue },
+        { 
+          name: newVariant.name, 
+          price: priceValue,
+          ...(newVariant.image && { image: newVariant.image }),
+        },
       ]);
-      setNewVariant({ name: '', price: '' });
+      setNewVariant({ name: '', price: '', image: '' });
     }
   };
 
@@ -304,65 +308,88 @@ export function ProductForm({ product, onSuccess, onCancel }: ProductFormProps) 
         </div>
 
         {variants.length > 0 && (
-          <div className="space-y-2">
+          <div className="space-y-4 border rounded-lg p-4 bg-muted/30">
             {variants.map((variant, index) => (
-              <div key={index} className="flex items-center gap-2 p-2 bg-muted rounded-md">
-                <span className="flex-1 text-sm">
-                  {variant.name} - {formatPrice(variant.price)}
-                </span>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => handleRemoveVariant(index)}
-                >
-                  Xóa
-                </Button>
+              <div key={index} className="space-y-3 pb-4 border-b last:border-0 last:pb-0">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-medium text-sm">
+                    {variant.name} - {formatPrice(variant.price)}
+                  </span>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleRemoveVariant(index)}
+                    className="text-destructive hover:text-destructive"
+                  >
+                    Xóa
+                  </Button>
+                </div>
+                <ImageUpload
+                  value={variant.image || ''}
+                  onChange={(path) => {
+                    const updatedVariants = [...variants];
+                    updatedVariants[index] = { ...variant, image: path };
+                    setVariants(updatedVariants);
+                  }}
+                  type="products"
+                  label={`Hình ảnh cho "${variant.name}"`}
+                />
               </div>
             ))}
           </div>
         )}
 
-        <div className="flex gap-2">
-          <Input
-            placeholder="Tên biến thể"
-            value={newVariant.name}
-            onChange={(e) =>
-              setNewVariant({ ...newVariant, name: e.target.value })
-            }
-            className="flex-1"
-          />
-          <Input
-            type="text"
-            placeholder="Giá (VNĐ)"
-            value={newVariant.price}
-            onChange={(e) => {
-              // Format price input with thousand separators (VNĐ format)
-              const value = e.target.value;
-              const cleanedValue = value.replace(/\D/g, '');
-              if (cleanedValue) {
-                const numValue = parseInt(cleanedValue, 10);
-                if (!isNaN(numValue)) {
-                  const formattedValue = numValue.toLocaleString('vi-VN');
-                  setNewVariant({ ...newVariant, price: formattedValue });
+        <div className="space-y-3 p-4 border rounded-lg bg-background">
+          <div className="flex gap-2">
+            <Input
+              placeholder="Tên biến thể"
+              value={newVariant.name}
+              onChange={(e) =>
+                setNewVariant({ ...newVariant, name: e.target.value })
+              }
+              className="flex-1"
+            />
+            <Input
+              type="text"
+              placeholder="Giá (VNĐ)"
+              value={newVariant.price}
+              onChange={(e) => {
+                // Format price input with thousand separators (VNĐ format)
+                const value = e.target.value;
+                const cleanedValue = value.replace(/\D/g, '');
+                if (cleanedValue) {
+                  const numValue = parseInt(cleanedValue, 10);
+                  if (!isNaN(numValue)) {
+                    const formattedValue = numValue.toLocaleString('vi-VN');
+                    setNewVariant({ ...newVariant, price: formattedValue });
+                  } else {
+                    setNewVariant({ ...newVariant, price: '' });
+                  }
                 } else {
                   setNewVariant({ ...newVariant, price: '' });
                 }
-              } else {
-                setNewVariant({ ...newVariant, price: '' });
-              }
-            }}
-            className="w-40"
+              }}
+              className="w-40"
+            />
+          </div>
+          <ImageUpload
+            value={newVariant.image}
+            onChange={(path) => setNewVariant({ ...newVariant, image: path })}
+            type="products"
+            label="Hình ảnh cho biến thể"
           />
-          <Button
-            type="button"
-            variant="default"
-            onClick={handleAddVariant}
-            disabled={!newVariant.name || !newVariant.price}
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
-          >
-            Thêm
-          </Button>
+          <div className="flex justify-end">
+            <Button
+              type="button"
+              variant="default"
+              onClick={handleAddVariant}
+              disabled={!newVariant.name || !newVariant.price}
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              Thêm
+            </Button>
+          </div>
         </div>
       </div>
 

@@ -15,9 +15,9 @@ export function VariantSelector({
     <div className="space-y-3">
       <label className="text-sm text-muted-foreground">{label}</label>
       <div className="flex flex-wrap gap-2">
-        {options.map((option) => (
+        {options.map((option, index) => (
           <button
-            key={option}
+            key={index}
             onClick={() => onSelect(option)}
             className={`px-5 py-2.5 rounded-full border transition-all ${
               selected === option
