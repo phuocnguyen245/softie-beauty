@@ -242,5 +242,48 @@
         "image": "/api/files/products/7f49a2a1-9a89-486d-911b-4a6f4b1eb4c8.jpg"
       }
     ]
+  },
+  {
+    "id": 18,
+    "name": "test444",
+    "slug": "test444",
+    "price": 50000,
+    "image": "/api/files/products/8f947b68-d108-4021-8ca8-0a4f7fb95d63.jpg",
+    "description": "rshsrhsrh",
+    "parentCategory": "False Lashes",
+    "subcategory": "Natural Lashes",
+    "variants": [
+      {
+        "name": "SP1",
+        "price": 60000,
+        "image": "/api/files/products/3fcc265d-166f-4962-b2b1-bb3fbceed48b.png"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "sanpham",
+    "slug": "sanpham",
+    "price": 50000,
+    "image": "/api/files/products/36b59c9f-42a6-4e14-99bf-d6f8e5e8bbd9.jpg",
+    "description": "124124",
+    "parentCategory": "Beauty Tools",
+    "subcategory": "Applicators",
+    "variants": [
+      {
+        "name": "bt1",
+        "price": 50000,
+        "image": "/api/files/products/78525c92-7630-4988-9580-4b6a8d52753b.png"
+      },
+      {
+        "name": "bt2",
+        "price": 60000
+      },
+      {
+        "name": "bt3",
+        "price": 70000,
+        "image": "/api/files/products/1640ec0e-7b58-465c-9035-2fb5af702c7e.jpg"
+      }
+    ]
   }
 ]

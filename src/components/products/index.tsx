@@ -38,15 +38,15 @@ export function FeaturedProducts() {
   }, []);
 
   // Define all parent categories
-    const parentCategories: ParentCategory[] = categoryStructure.map((cat) => cat.parent as ParentCategory);
+  const parentCategories: ParentCategory[] = categoryStructure.map((cat) => cat.parent as ParentCategory);
 
   // Get subcategories for the active parent category
   const currentSubcategories =
     activeParentCategory !== "All"
       ? (
-          categoryStructure.find((cat) => cat.parent === activeParentCategory)
-            ?.subcategories || []
-        ).map((sub: any) => (typeof sub === "string" ? sub : sub.name))
+        categoryStructure.find((cat) => cat.parent === activeParentCategory)
+          ?.subcategories || []
+      ).map((sub: any) => (typeof sub === "string" ? sub : sub.name))
       : [];
 
   // Handle parent category change
@@ -80,7 +80,7 @@ export function FeaturedProducts() {
   })();
 
   return (
-    <section id="products" className="py-16 sm:py-24 bg-background">
+    <section id="products" className="py-16 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 space-y-4">

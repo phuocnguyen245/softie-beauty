@@ -13,7 +13,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = getBaseUrl();
-  
+
   // Fetch products for structured data
   let productsCount = 0;
   try {
@@ -73,9 +73,7 @@ export default async function Home() {
       <main>
         <Hero />
         <FeaturedProducts />
-        <WhySoftie />
-        <Testimonials />
-        <Newsletter />
+
       </main>
     </div>
   );
